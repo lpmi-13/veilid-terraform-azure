@@ -1,0 +1,6 @@
+.env
+.terraform
+*.lock*
+*.tfstate*
+veilid-key*
+*.pub
