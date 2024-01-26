@@ -20,7 +20,8 @@ resource "azurerm_subnet" "internal" {
 
 
 resource "azurerm_public_ip" "pip" {
-  name                = "veilid-pip"
+  count               = local.instance_count
+  name                = "veilid-pip-${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   allocation_method   = "Static"
@@ -28,7 +29,7 @@ resource "azurerm_public_ip" "pip" {
 
 resource "azurerm_network_interface" "main" {
   count               = local.instance_count
-  name                = "veilid-nic${count.index}"
+  name                = "veilid-nic-${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 
@@ -36,7 +37,7 @@ resource "azurerm_network_interface" "main" {
     name                          = "primary"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip.id
+    public_ip_address_id          = azurerm_public_ip.pip[count.index].id
   }
 }
 
@@ -58,10 +59,11 @@ resource "azurerm_linux_virtual_machine" "main" {
   admin_ssh_key {
     username = "veilid"
     # only RSA keys are supported, so make sure the key you use here is one of those
-    public_key = file("PATH_TO_YOUR_SSH_KEY")
+    public_key = file("./PATH_TO_YOUR_PRIVATE_SSH_KEY")
   }
 
   disable_password_authentication = true
+
   network_interface_ids = [
     azurerm_network_interface.main[count.index].id,
   ]

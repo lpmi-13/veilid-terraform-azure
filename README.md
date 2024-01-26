@@ -30,6 +30,8 @@ Here are the steps to get all ready to run terraform:
 
 ### How to connect to the instance
 
+> The cloud init script takes a couple minutes to run, since the default for this repo (Standard_B1ls) are very tiny (1 vCPU/.5 GB RAM) machines, so if `which veilid-cli` doesn't show anything immediately after logging into the machine, give it a bit more time.
+
 After running `terraform apply`, you'll see the output of the public IP address like so:
 
 ```sh
