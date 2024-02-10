@@ -77,7 +77,9 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 
   os_disk {
-    storage_account_type = "Standard_LRS"
+    # you have to specify this exact disk size to get the setting that qualifies for the free tier.
+    disk_size_gb         = 64
+    storage_account_type = "Premium_LRS"
     caching              = "ReadWrite"
   }
 }
