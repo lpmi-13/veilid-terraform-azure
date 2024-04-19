@@ -20,7 +20,7 @@ resource "azurerm_subnet" "internal" {
 
 
 resource "azurerm_public_ip" "pip-ipv4" {
-  count               = local.instance_count
+  count               = local.needIpv4 ? local.instance_count : 0
   name                = "veilid-pip-ipv4-${count.index}"
   ip_version          = "IPv4"
   resource_group_name = azurerm_resource_group.main.name
@@ -47,14 +47,14 @@ resource "azurerm_network_interface" "main" {
 
   ip_configuration {
     primary                       = true
-    name                          = "primary-ipv4"
+    name                          = "ipv4-address"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip-ipv4[count.index].id
+    public_ip_address_id          = local.needIpv4 ? azurerm_public_ip.pip-ipv4[count.index].id : null
   }
 
   ip_configuration {
-    name                          = "primary-ipv6"
+    name                          = "ipv6-address"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
     private_ip_address_version    = "IPv6"

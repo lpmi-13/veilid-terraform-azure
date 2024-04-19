@@ -1,4 +1,5 @@
 locals {
+  needIpv4       = false
   instance_count = 1
   # check https://learn.microsoft.com/en-gb/azure/virtual-machines/sizes-b-series-burstable for a bunch of different options for
   # the cheaper instance sizes
