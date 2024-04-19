@@ -6,7 +6,7 @@ Running veilid nodes is a super easy way to help grow the network, and if you do
 
 ## Cost
 
-Because this is configured to run in Azure's free tier, the cost should be minimal (0.10 USD/month). The only thing you might need to pay for is an IPv4 address if you require it for SSH access.
+Because this is configured to run in Azure's free tier, the cost should be nothing. The only thing you might need to pay for is an IPv4 address if you require it for SSH access.
 
 > see note below on enabling/disabling IPv4 connectivity.
 
