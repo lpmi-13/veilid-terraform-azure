@@ -17,7 +17,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   admin_ssh_key {
     username = "veilid"
     # only RSA keys are supported, so make sure the key you use here is one of those
-    public_key = file("./PATH_TO_YOUR_PRIVATE_SSH_KEY")
+    public_key = file("./PATH_TO_YOUR_PUBLIC_SSH_KEY")
   }
 
   disable_password_authentication = true
