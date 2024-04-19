@@ -21,6 +21,11 @@ resource "azurerm_public_ip" "pip-ipv4" {
   location            = azurerm_resource_group.main.location
   allocation_method   = "Static"
   sku                 = "Standard"
+
+  lifecycle {
+    # we need this for terraform to be able to fully destroy the ipv4 address when we don't want it
+    create_before_destroy = true
+  }
 }
 
 resource "azurerm_public_ip" "pip-ipv6" {
