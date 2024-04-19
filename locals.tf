@@ -1,12 +1,16 @@
 locals {
-  needIpv4       = false
+  # if you want to SSH in and only have an IPv4 public address, change this value to `true`
+  needIpv4 = false
+
   instance_count = 1
+
   # check https://learn.microsoft.com/en-gb/azure/virtual-machines/sizes-b-series-burstable for a bunch of different options for
   # the cheaper instance sizes
   #
   # the b1s is the instance class that qualifies for the free tier
   instance_size = "Standard_B1s"
-  region        = "uksouth"
+
+  region = "uksouth"
   # this is the current region list, so use one of these if you want to run it somewhere else
   # "australiacentral",
   # "australiacentral2",
