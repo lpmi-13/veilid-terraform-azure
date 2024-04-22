@@ -74,4 +74,6 @@ And whichever address you want to use to connect, you should be able to run the 
 ssh -i ROUTE_TO_PRIVATE_KEY veilid@IP_ADDRESS_FROM_OUTPUT
 ```
 
+> when using an IPv6 address via ssh, you might need to put square brackets around the address, eg - `ssh -i ROUTE_TO_PRIVATE_KEY veilid@[IP_ADDRESS_FROM_OUTPUT]`
+
 > The cloud init script takes a couple minutes to run, since the default for this repo (Standard_B1s) are very tiny (1 vCPU/1 GB RAM) machines, so if `which veilid-cli` doesn't show anything immediately after logging into the machine, give it a bit more time.
