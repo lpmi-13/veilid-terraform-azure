@@ -54,54 +54,6 @@ resource "azurerm_network_security_group" "veilid-access" {
   security_rule {
     access                     = "Allow"
     direction                  = "Inbound"
-    name                       = "tcp-5151-inbound"
-    priority                   = 120
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    source_address_prefix      = "*"
-    destination_port_range     = "5151"
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
-    access                     = "Allow"
-    direction                  = "Outbound"
-    name                       = "tcp-5151-outbound"
-    priority                   = 120
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    source_address_prefix      = "*"
-    destination_port_range     = "5151"
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
-    access                     = "Allow"
-    direction                  = "Inbound"
-    name                       = "udp-5151-inbound"
-    priority                   = 130
-    protocol                   = "Udp"
-    source_port_range          = "*"
-    source_address_prefix      = "*"
-    destination_port_range     = "5151"
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
-    access                     = "Allow"
-    direction                  = "Outbound"
-    name                       = "udp-5151-outbound"
-    priority                   = 130
-    protocol                   = "Udp"
-    source_port_range          = "*"
-    source_address_prefix      = "*"
-    destination_port_range     = "5151"
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
-    access                     = "Allow"
-    direction                  = "Inbound"
     name                       = "ssh-access"
     priority                   = 140
     protocol                   = "Tcp"
